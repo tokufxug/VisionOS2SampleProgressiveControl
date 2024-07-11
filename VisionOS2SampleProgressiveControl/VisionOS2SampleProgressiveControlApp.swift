@@ -11,6 +11,7 @@ import SwiftUI
 struct VisionOS2SampleProgressiveControlApp: App {
 
     @State private var appModel = AppModel()
+    @State private var immersionStyle: ImmersionStyle = .progressive(0.0...1.0, initialAmount: 0.1)
 
     var body: some Scene {
         WindowGroup {
@@ -28,6 +29,6 @@ struct VisionOS2SampleProgressiveControlApp: App {
                     appModel.immersiveSpaceState = .closed
                 }
         }
-        .immersionStyle(selection: .constant(.progressive), in: .progressive)
+        .immersionStyle(selection: $immersionStyle, in: .mixed, .progressive, .full)
     }
 }
